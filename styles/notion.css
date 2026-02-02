@@ -236,10 +236,31 @@
 
 .notion-collection-row {
   padding-bottom: 1em;
+  display: flex !important;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25rem 0.75rem;
+}
+
+.notion-collection-row-body {
+  display: contents;
 }
 
 .notion-collection-page-properties .notion-collection-column-title {
   display: none;
+}
+
+.notion-collection-row-property {
+  display: inline-flex !important;
+  width: auto !important;
+  align-items: center;
+}
+
+.notion-collection-row-property:not(:last-child)::after {
+  content: '·';
+  margin-left: 0.75rem;
+  opacity: 0.5;
 }
 
 .notion-collection-row-property .notion-property {
@@ -248,10 +269,11 @@
 }
 
 .notion-collection-row-value {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   padding: 0;
-  min-height: 23px;
+  min-height: auto;
+  width: auto !important;
 }
 
 .notion-page-cover-wrapper,
