@@ -219,3 +219,33 @@
 .hidden {
   visibility: hidden;
 }
+
+.darkModeToggle {
+  position: fixed;
+  top: 0.75rem;
+  right: 1rem;
+  z-index: 1000;
+  cursor: pointer;
+  font-size: 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  border-radius: 50%;
+  background: transparent;
+  transition: all 250ms ease-out;
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+:global(.dark-mode) .darkModeToggle {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.dark-mode .darkModeToggle {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.light-mode .darkModeToggle {
+  color: rgba(0, 0, 0, 0.7);
+}
