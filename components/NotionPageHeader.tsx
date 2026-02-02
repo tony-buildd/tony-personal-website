@@ -1,13 +1,14 @@
-import type * as types from 'notion-types'
 import { IoMoonSharp } from '@react-icons/all-files/io5/IoMoonSharp'
 import { IoSunnyOutline } from '@react-icons/all-files/io5/IoSunnyOutline'
 import cs from 'classnames'
+import type * as types from 'notion-types'
 import * as React from 'react'
-import { Breadcrumbs, Header, Search, useNotionContext } from 'react-notion-x'
+import { Breadcrumbs, Search, useNotionContext } from 'react-notion-x'
 
 import { isSearchEnabled, navigationLinks, navigationStyle } from '@/lib/config'
 import { useDarkMode } from '@/lib/use-dark-mode'
 
+import { DarkModeToggle } from './DarkModeToggle'
 import styles from './styles.module.css'
 
 function ToggleThemeButton() {
@@ -40,7 +41,18 @@ export function NotionPageHeader({
   const { components, mapPageUrl } = useNotionContext()
 
   if (navigationStyle === 'default') {
-    return <Header block={block} />
+    return (
+      <header className='notion-header'>
+        <div className='notion-nav-header'>
+          <Breadcrumbs block={block} rootOnly={true} />
+
+          <div className='notion-nav-header-rhs breadcrumbs'>
+            <DarkModeToggle />
+            {isSearchEnabled && <Search block={block} title={null} />}
+          </div>
+        </div>
+      </header>
+    )
   }
 
   return (

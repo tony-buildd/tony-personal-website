@@ -1,15 +1,14 @@
-import { FaEnvelopeOpenText } from '@react-icons/all-files/fa/FaEnvelopeOpenText'
-import { FaGithub } from '@react-icons/all-files/fa/FaGithub'
-import { FaLinkedinIn } from '@react-icons/all-files/fa/FaLinkedinIn'
-import { FaMastodon } from '@react-icons/all-files/fa/FaMastodon'
-import { FaTwitter } from '@react-icons/all-files/fa/FaTwitter'
-import { FaYoutube } from '@react-icons/all-files/fa/FaYoutube'
-import { FaZhihu } from '@react-icons/all-files/fa/FaZhihu'
-import * as React from 'react'
+import { FaEnvelopeOpenText } from '@react-icons/all-files/fa/FaEnvelopeOpenText';
+import { FaLinkedinIn } from '@react-icons/all-files/fa/FaLinkedinIn';
+import { FaMastodon } from '@react-icons/all-files/fa/FaMastodon';
+import { FaYoutube } from '@react-icons/all-files/fa/FaYoutube';
+import { FaZhihu } from '@react-icons/all-files/fa/FaZhihu';
+import * as React from 'react';
+import { FaSquareGithub, FaXTwitter } from "react-icons/fa6";
 
-import * as config from '@/lib/config'
+import * as config from '@/lib/config';
 
-import styles from './styles.module.css'
+import styles from './styles.module.css';
 
 // TODO: merge the data and icons from PageSocial with the social links in Footer
 
@@ -31,7 +30,7 @@ export function FooterImpl() {
             target='_blank'
             rel='noopener noreferrer'
           >
-            <FaTwitter />
+            <FaXTwitter />
           </a>
         )}
 
@@ -66,7 +65,7 @@ export function FooterImpl() {
             target='_blank'
             rel='noopener noreferrer'
           >
-            <FaGithub />
+            <FaSquareGithub />
           </a>
         )}
 

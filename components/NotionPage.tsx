@@ -21,7 +21,6 @@ import { getCanonicalPageUrl, mapPageUrl } from '@/lib/map-page-url'
 import { searchNotion } from '@/lib/search-notion'
 import type * as types from '@/lib/types'
 import { useDarkMode } from '@/lib/use-dark-mode'
-import { DarkModeToggle } from './DarkModeToggle'
 import { Footer } from './Footer'
 import { Loading } from './Loading'
 import { NotionPageHeader } from './NotionPageHeader'
@@ -327,7 +326,6 @@ export function NotionPage({
         footer={footer}
       />
 
-      <DarkModeToggle />
     </>
   )
 }
