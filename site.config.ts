@@ -17,9 +17,9 @@ export default siteConfig({
   description: 'Tony Nguyen Website',
 
   // social usernames (optional)
-  twitter: 'tony.build',
+  twitter: 'tonybuildd',
   github: 'tony-buildd',
-  linkedin: 'tonynguyen',
+  linkedin: 'tony-buildd',
   // mastodon: '#', // optional mastodon profile URL, provides link verification
   // newsletter: '#', // optional newsletter URL
   // youtube: '#', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
