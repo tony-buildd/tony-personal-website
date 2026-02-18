@@ -9,18 +9,18 @@ import * as React from 'react'
 import BodyClassName from 'react-body-classname'
 import {
   type NotionComponents,
-  NotionRenderer,
   useNotionContext
 } from 'react-notion-x'
 import { EmbeddedTweet, TweetNotFound, TweetSkeleton } from 'react-tweet'
 import { useSearchParam } from 'react-use'
 
+import type * as types from '@/lib/types'
 import * as config from '@/lib/config'
 import { mapImageUrl } from '@/lib/map-image-url'
 import { getCanonicalPageUrl, mapPageUrl } from '@/lib/map-page-url'
 import { searchNotion } from '@/lib/search-notion'
-import type * as types from '@/lib/types'
 import { useDarkMode } from '@/lib/use-dark-mode'
+
 import { Footer } from './Footer'
 import { Loading } from './Loading'
 import { NotionPageHeader } from './NotionPageHeader'
@@ -104,10 +104,20 @@ const Code = dynamic(() =>
   })
 )
 
+const NotionRenderer = dynamic(
+  () => import('react-notion-x').then((m) => m.NotionRenderer),
+  {
+    ssr: false
+  }
+)
+
 const Collection = dynamic(() =>
   import('react-notion-x/build/third-party/collection').then(
     (m) => m.Collection
-  )
+  ),
+  {
+    ssr: false
+  }
 )
 const Equation = dynamic(() =>
   import('react-notion-x/build/third-party/equation').then((m) => m.Equation)
@@ -271,20 +281,38 @@ export function NotionPage({
     g.block = block
   }
 
-  const canonicalPageUrl = config.isDev
-    ? undefined
-    : getCanonicalPageUrl(site, recordMap)(pageId)
+  let canonicalPageUrl: string | undefined
+  try {
+    canonicalPageUrl = config.isDev
+      ? undefined
+      : getCanonicalPageUrl(site, recordMap)(pageId)
+  } catch (err) {
+    console.error('canonicalPageUrl error', { pageId }, err)
+    canonicalPageUrl = undefined
+  }
 
-  const socialImage = mapImageUrl(
-    getPageProperty<string>('Social Image', block, recordMap) ||
-      (block as PageBlock).format?.page_cover ||
-      config.defaultPageCover,
-    block
-  )
+  let socialImage: string | undefined
+  try {
+    socialImage = mapImageUrl(
+      getPageProperty<string>('Social Image', block, recordMap) ||
+        (block as PageBlock).format?.page_cover ||
+        config.defaultPageCover,
+      block
+    )
+  } catch (err) {
+    console.error('socialImage error', { pageId }, err)
+    socialImage = config.defaultPageCover
+  }
 
-  const socialDescription =
-    getPageProperty<string>('Description', block, recordMap) ||
-    config.description
+  let socialDescription: string
+  try {
+    socialDescription =
+      getPageProperty<string>('Description', block, recordMap) ||
+      config.description
+  } catch (err) {
+    console.error('socialDescription error', { pageId }, err)
+    socialDescription = config.description
+  }
 
   return (
     <>

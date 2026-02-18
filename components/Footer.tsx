@@ -1,10 +1,11 @@
 import { FaEnvelopeOpenText } from '@react-icons/all-files/fa/FaEnvelopeOpenText';
+import { FaGithubSquare } from '@react-icons/all-files/fa/FaGithubSquare';
 import { FaLinkedinIn } from '@react-icons/all-files/fa/FaLinkedinIn';
 import { FaMastodon } from '@react-icons/all-files/fa/FaMastodon';
+import { FaTwitterSquare } from '@react-icons/all-files/fa/FaTwitterSquare';
 import { FaYoutube } from '@react-icons/all-files/fa/FaYoutube';
 import { FaZhihu } from '@react-icons/all-files/fa/FaZhihu';
 import * as React from 'react';
-import { FaSquareGithub, FaXTwitter } from "react-icons/fa6";
 
 import * as config from '@/lib/config';
 
@@ -30,7 +31,7 @@ export function FooterImpl() {
             target='_blank'
             rel='noopener noreferrer'
           >
-            <FaXTwitter />
+            <FaTwitterSquare />
           </a>
         )}
 
@@ -65,7 +66,7 @@ export function FooterImpl() {
             target='_blank'
             rel='noopener noreferrer'
           >
-            <FaSquareGithub />
+            <FaGithubSquare />
           </a>
         )}
 
