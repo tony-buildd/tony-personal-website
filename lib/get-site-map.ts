@@ -1,4 +1,4 @@
-import { getAllPagesInSpace, getPageProperty, uuidToId } from 'notion-utils'
+import { getAllPagesInSpace, getPageProperty, parsePageId, uuidToId } from 'notion-utils'
 import pMemoize from 'p-memoize'
 
 import type * as types from './types'
@@ -26,7 +26,8 @@ const getAllPages = pMemoize(getAllPagesImpl, {
 })
 
 const getPage = async (pageId: string, opts?: any) => {
-  console.log('\nnotion getPage', uuidToId(pageId))
+  const parsedPageId = parsePageId(pageId, { uuid: false })
+  console.log('\nnotion getPage', parsedPageId ? uuidToId(parsedPageId) : pageId)
   return notion.getPage(pageId, {
     kyOptions: {
       timeout: 30_000
